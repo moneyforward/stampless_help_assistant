@@ -1,0 +1,9 @@
+[submodule "frontend/mfui"]
+	path = frontend/mfui
+	url = git@github.com:moneyforward/mfui.git
+[submodule "frontend/mfc_design_guidelines"]
+	path = frontend/mfc_design_guidelines
+	url = git@github.com:moneyforward/mfc_design_guidelines.git
+[submodule "frontend/stampless_react"]
+	path = frontend/stampless_react
+	url = git@github.com:moneyforward/stampless_react.git
