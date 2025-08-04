@@ -7,3 +7,30 @@
 [submodule "frontend/stampless_react"]
 	path = frontend/stampless_react
 	url = git@github.com:moneyforward/stampless_react.git
+[submodule "backend/stampless_backend"]
+	path = backend/stampless_backend
+	url = git@github.com:moneyforward/stampless_backend.git
+[submodule "backend/stampless_open_api"]
+	path = backend/stampless_open_api
+	url = git@github.com:moneyforward/stampless_open_api.git
+[submodule "backend/stampless_cdb"]
+	path = backend/stampless_cdb
+	url = git@github.com:moneyforward/stampless_cdb.git
+[submodule "backend/stampless_dtm"]
+	path = backend/stampless_dtm
+	url = git@github.com:moneyforward/stampless_dtm.git
+[submodule "backend/stampless_import"]
+	path = backend/stampless_import
+	url = git@github.com:moneyforward/stampless_import.git
+[submodule "backend/stampless_ocr"]
+	path = backend/stampless_ocr
+	url = git@github.com:moneyforward/stampless_ocr.git
+[submodule "backend/stampless_pdf"]
+	path = backend/stampless_pdf
+	url = git@github.com:moneyforward/stampless_pdf.git
+[submodule "backend/stampless_webdav"]
+	path = backend/stampless_webdav
+	url = git@github.com:moneyforward/stampless_webdav.git
+[submodule "backend/stampless_word"]
+	path = backend/stampless_word
+	url = git@github.com:moneyforward/stampless_word.git
