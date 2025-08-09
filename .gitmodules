@@ -36,4 +36,4 @@
 	url = git@github.com:moneyforward/stampless_word.git
 [submodule "frontend/stampless_frontend"]
 	path = frontend/stampless_frontend
-	url = git@github.com:moneyforward/stampless_frontend.git
+	url = git@github.com:moneyforward/stampless_help_assistant.git
