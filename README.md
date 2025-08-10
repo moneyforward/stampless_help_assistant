@@ -92,6 +92,7 @@ https://moneyforward.kibe.la/notes/329675
 
 ### notion MCP
 動画載ってます。
+
 https://notion.notion.site/Notion-MCP-1d0efdeead058054a339ffe6b38649e1#:~:text=Cursor%E3%81%A7%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
 
 ## Gituhubのコード
