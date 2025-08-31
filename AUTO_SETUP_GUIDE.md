@@ -63,8 +63,8 @@ AIエージェントが自動的に以下の処理を実行します：
 
 #### 自動実行される処理
 ```bash
-# 1. 自動更新スクリプトの作成
-./setup_auto_update_mac.sh
+# 1. OS自動検出・設定スクリプト実行
+./setup_auto_update.sh
 
 # 2. 実行権限付与
 chmod +x *.sh
