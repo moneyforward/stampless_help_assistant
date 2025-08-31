@@ -16,7 +16,7 @@ Money Forwardのstampless-help-assistantリポジトリに対して、Git自動�
 ### ✅ 完了済みの設定
 - **ファイル**: `.github/workflows/git-daily-update.yml`
 - **機能**:
-  - 毎日0時（UTC）に自動実行
+  - 毎日朝10時（日本時間）に自動実行
   - Node.js 18.x環境での実行
   - 依存関係のインストール
   - プロジェクト構造の確認
