@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "🌅 おはようございます！"
+echo "📅 今日の日付: $(date '+%Y年%m月%d日')"
+echo ""
+echo "🔔 stampless-help-assistant の更新をお忘れなく！"
+echo ""
+echo "📋 実行方法:"
+echo "   ./pull_all_repos.sh"
+echo ""
+echo "📊 前回の更新状況:"
+cat 🔔_STAMPLESS_UPDATE_NOTIFICATION.md 2>/dev/null || echo "更新履歴がありません。"
+echo ""
+echo "💡 ヒント: Cursorのタスク機能からも実行できます"
+echo "   コマンドパレット → Tasks: Run Task → stampless-help-assistant 更新"
+echo ""
+echo "🔗 GitHub Actionsの実行状況:"
+echo "   https://github.com/moneyforward/stampless_help_assistant/actions"
