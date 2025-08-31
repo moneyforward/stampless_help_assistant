@@ -105,8 +105,8 @@ pkill -f git_auto_update
 
 ### 🔧 共通ファイル
 ```
-pull_all_repos.sh          # 基本更新スクリプト
-🔔_GIT_UPDATE_NOTIFICATION.md  # 更新履歴
+pull_all_repos.sh                    # 基本更新スクリプト
+🔔_STAMPLESS_UPDATE_NOTIFICATION.md   # 更新履歴（専用）
 ```
 
 ### 📊 個別設定ファイル
