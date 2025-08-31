@@ -1,9 +1,9 @@
 name: Daily Git Update
 
-# 毎日朝9時に実行 + 手動実行可能
+# 毎日朝10時に実行（日本時間） + 手動実行可能
 on:
   schedule:
-    - cron: '0 0 * * *'  # 毎日0時実行（UTC）
+    - cron: '0 1 * * *'  # 毎日1時実行（UTC = 日本時間10時）
   workflow_dispatch:     # 手動実行ボタン
 
 jobs:
