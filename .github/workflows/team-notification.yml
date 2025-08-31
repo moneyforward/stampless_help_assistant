@@ -1,0 +1,55 @@
+name: Git Update Notification
+
+on:
+  workflow_run:
+    workflows: ["Daily Git Update"]
+    types: [completed]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+    - name: 通知ファイル作成
+      run: |
+        echo "# 🔔 stampless-help-assistant Git更新通知 - $(date '+%Y年%m月%d日 %H:%M')" > update_notification.md
+        echo "" >> update_notification.md
+        echo "## ✅ リモートリポジトリ更新完了" >> update_notification.md
+        echo "" >> update_notification.md
+        echo "**更新されたリポジトリ**: stampless-help-assistant" >> update_notification.md
+        echo "**実行時刻**: $(date '+%Y年%m月%d日 %H:%M:%S')" >> update_notification.md
+        echo "" >> update_notification.md
+        echo "## 📋 チームメンバーへ" >> update_notification.md
+        echo "" >> update_notification.md
+        echo "ローカル環境の更新をお忘れなく！" >> update_notification.md
+        echo "" >> update_notification.md
+        echo "### 更新内容" >> update_notification.md
+        echo "- Node.jsプロジェクトの依存関係更新" >> update_notification.md
+        echo "- プロジェクト構造の確認" >> update_notification.md
+        echo "- スクリプト実行テスト" >> update_notification.md
+        echo "" >> update_notification.md
+        echo "### 更新方法" >> update_notification.md
+        echo "- Cursor: \`Tasks: Run Task\` → \`Git リポジトリ更新\`" >> update_notification.md
+        echo "- ターミナル: \`./pull_all_repos.sh\`" >> update_notification.md
+        echo "- 手動: \`git pull\`" >> update_notification.md
+
+    - name: 通知ファイルアップロード
+      uses: actions/upload-artifact@v4
+      with:
+        name: stampless-git-update-notification
+        path: update_notification.md
+
+    - name: コンソール通知
+      run: |
+        echo "🎉 stampless-help-assistant のGitHub Actionsによる自動更新が完了しました！"
+        echo "📦 リポジトリ: stampless-help-assistant"
+        echo "📅 実行時刻: $(date '+%Y年%m月%d日 %H:%M:%S')"
+        echo ""
+        echo "💡 チームメンバーの方はローカル環境の更新をお願いします！"
+        echo "   Cursorタスクまたは ./pull_all_repos.sh を実行してください。"
+        echo ""
+        echo "📋 更新された内容:"
+        echo "   - Node.jsプロジェクトの依存関係"
+        echo "   - プロジェクト構造の確認"
+        echo "   - スクリプト実行テスト"
