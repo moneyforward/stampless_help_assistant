@@ -58,7 +58,7 @@ https://moneyforward.kibe.la/notes/8680
 Gituhb上にあるコードをローカルに落とす作業（=クローン）を行います。以下の手順で進めてください。
 
 Cursorのチャットに以下を入力：
-`https://github.com/your-repo/help-request-assistant` 
+`https://github.com/moneyforward/stampless_help_assistant` 
 このリポジトリをクローンして
 
 ### 2. ルールファイルを適用
@@ -96,12 +96,24 @@ https://moneyforward.kibe.la/notes/329675
 https://notion.notion.site/Notion-MCP-1d0efdeead058054a339ffe6b38649e1#:~:text=Cursor%E3%81%A7%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
 
 ## Gituhubのコードを最新に保つための設定
-クローンしたGitリポジトリを一括で最新状態へ更新する方法です。情報が古いままだとインプットを間違え、当然アウトプットも間違えます。必ず設定し、更新するようにしましょう。
-以下の記事をCursorのチャット欄に挿入し、「この記事を参考に設定して」と言うだけでOKです。
-[https://moneyforward.kibe.la/notes/330999](https://moneyforward.kibe.la/notes/331449)
+### 🚀 **自動更新システム導入済み**
 
-途中Runするかどうか聞かれますが、基本的にEnterで大丈夫です。進みましょう。
-※Enter押すだけでコマンドを叩かないように進められるように作っています。
+このリポジトリには**GitHub Actions**による完全自動更新システムが導入されています！
+
+#### ✅ **自動更新機能**
+- **リモート更新**: 毎日朝10時(JST)に自動実行
+- **プッシュ時更新**: コード変更時に自動実行  
+- **依存関係管理**: Node.js, npm, プロジェクト構造の自動確認
+
+#### 📊 **現在の状況確認方法**
+- **GitHub Actions実行状況**: [こちら](https://github.com/moneyforward/stampless_help_assistant/actions)
+- **ローカル更新通知**: `🔔_STAMPLESS_UPDATE_NOTIFICATION.md` ファイル
+- **更新コマンド**: Cursorで `Tasks: Run Task` → `Git リポジトリ更新`
+
+#### 💡 **従来の手動設定は不要**
+以前のKibela記事による手動設定は不要になりました。すべて自動化されています。
+
+**情報が常に最新状態に保たれ、正確なAI分析結果を提供します！** 🎯
 
 
 
