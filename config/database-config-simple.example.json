@@ -1,0 +1,23 @@
+{
+  "host": "your_mysql_host",
+  "user": "your_mysql_user", 
+  "password": "your_mysql_password",
+  "database": "stampless_backend_db",
+  "port": 3306,
+  "_comments": {
+    "host": "stampless_backend の MySQL ホスト名（例: db.stampless.internal）",
+    "user": "読み取り専用ユーザー名",
+    "password": "対応するパスワード",
+    "database": "通常は 'stampless_backend' または類似の名前",
+    "port": "通常は 3306（MySQL標準ポート）",
+    "設定方法": [
+      "1. このファイルを database-config-simple.json にコピー",
+      "2. 実際の接続情報に書き換え",
+      "3. DB管理者から navis_offices, address_book_masters の読み取り権限を取得",
+      "4. VPN接続確認後、テスト実行"
+    ],
+    "必要な権限": "SELECT権限のみ（navis_offices, address_book_masters テーブル）",
+    "依頼先": "stampless_backend のDB管理者",
+    "備考": "ERPWeb権限は不要です"
+  }
+}

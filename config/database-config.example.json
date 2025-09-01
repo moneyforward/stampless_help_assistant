@@ -1,0 +1,22 @@
+{
+  "stampless_db": {
+    "host": "stampless-db.internal.moneyforward.com",
+    "user": "readonly_user",
+    "password": "YOUR_DB_PASSWORD_HERE",
+    "database": "stampless_production",
+    "port": 3306,
+    "ssl": {
+      "rejectUnauthorized": false
+    }
+  },
+  "erpweb_api": {
+    "host": "erp-api.internal.moneyforward.com",
+    "port": 443,
+    "username": "YOUR_ERP_USERNAME",
+    "password": "YOUR_ERP_PASSWORD",
+    "base_url": "https://erp-api.internal.moneyforward.com"
+  },
+  "aweb": {
+    "base_url": "https://aweb.moneyforward.com"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "customers": [
+    {
+      "company_name": "株式会社マネーフォワード",
+      "tenant_uid": "67890",
+      "office_id": "12345",
+      "corporate_number": "1234567890123",
+      "identification_code": "MF123",
+      "plan_name": "Midプラン",
+      "payment_method": "クレジットカード",
+      "created_at": "2023-01-15",
+      "aweb_url": "https://aweb.moneyforward.com/offices/12345",
+      "erp_url": "https://erp.moneyforward.com/search?tenant_uid=67890",
+      "notes": "よく問い合わせがある顧客"
+    },
+    {
+      "company_name": "株式会社サンプル",
+      "tenant_uid": "11111",
+      "office_id": "99999",
+      "corporate_number": "9876543210987",
+      "identification_code": "SAMPLE001",
+      "plan_name": "Basicプラン",
+      "payment_method": "銀行振込",
+      "created_at": "2023-03-20",
+      "aweb_url": "https://aweb.moneyforward.com/offices/99999",
+      "erp_url": "https://erp.moneyforward.com/search?tenant_uid=11111",
+      "notes": "テスト用データ"
+    },
+    {
+      "company_name": "テスト顧客",
+      "tenant_uid": "99999",
+      "office_id": "77777",
+      "corporate_number": "未登録",
+      "identification_code": "未設定",
+      "plan_name": "Basicプラン",
+      "payment_method": "銀行振込",
+      "created_at": "2025-08-20",
+      "aweb_url": "https://aweb.moneyforward.com/offices/77777",
+      "erp_url": "https://erp.moneyforward.com/search?tenant_uid=99999",
+      "notes": "動作確認用",
+      "added_at": "2025-08-20T08:35:03.944Z"
+    }
+  ],
+  "last_updated": "2025-08-20T08:35:03.944Z",
+  "data_sources": [
+    "手動入力",
+    "Aweb画面コピー",
+    "ERPWebスクリーンショット",
+    "CS チームからの情報"
+  ],
+  "update_instructions": [
+    "月1回、よく問い合わせがある顧客を追加",
+    "Aweb検索結果から情報をコピペで追加",
+    "支払い方法はERPWebで確認して手動入力"
+  ]
+}

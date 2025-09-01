@@ -1,0 +1,34 @@
+{
+  "name": "stampless-help-assistant",
+  "version": "1.0.0",
+  "description": "実業務用 顧客対応支援システム",
+  "main": "scripts/customer-lookup-db-only.js",
+  "scripts": {
+    "lookup": "node scripts/customer-lookup-db-only.js",
+    "lookup-demo": "node scripts/customer-lookup.js",
+    "lookup-real": "node scripts/customer-lookup-real.js",
+    "test": "node scripts/customer-lookup-db-only.js 'テスト'",
+    "setup": "npm install && cp config/database-config-simple.example.json config/database-config-simple.json",
+    "slides-setup": "node scripts/google-slides-api.js --setup",
+    "slides-sync": "node scripts/google-slides-api.js --sync",
+    "slides-status": "node scripts/google-slides-api.js --status"
+  },
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "googleapis": "^130.0.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "customer-support",
+    "helpdesk",
+    "moneyforward",
+    "database",
+    "automation"
+  ],
+  "author": "MoneyForward CS Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moneyforward/stampless-help-assistant"
+  }
+}
