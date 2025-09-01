@@ -98,7 +98,7 @@ https://notion.notion.site/Notion-MCP-1d0efdeead058054a339ffe6b38649e1#:~:text=C
 ## Gituhubのコードを最新に保つための設定
 クローンしたGitリポジトリを一括で最新状態へ更新する方法です。情報が古いままだとインプットを間違え、当然アウトプットも間違えます。必ず設定し、更新するようにしましょう。
 以下の記事をCursorのチャット欄に挿入し、「この記事を参考に設定して」と言うだけでOKです。
-https://moneyforward.kibe.la/notes/330999
+[https://moneyforward.kibe.la/notes/330999](https://moneyforward.kibe.la/notes/331449)
 
 途中Runするかどうか聞かれますが、基本的にEnterで大丈夫です。進みましょう。
 ※Enter押すだけでコマンドを叩かないように進められるように作っています。
