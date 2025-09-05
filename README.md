@@ -83,8 +83,10 @@ Cursorのチャットに**お客様からの問い合わせをそのまま入力
 
 ## MCPのセットアップ
 ### kibela MCP
-以下のkibelaを、Cursorのチャットに貼り付け、「この通りにKibela MCPのセットして」と投げてください。
+以下のkibelaの記事をマークダウンエディタモードにし、中の文章をそのままCursorのチャットに貼り付け、「この通りにKibela MCPのセットして」と投げてください。
 https://moneyforward.kibe.la/notes/329675
+<img width="1499" height="823" alt="image" src="https://github.com/user-attachments/assets/ea431cd1-a7fc-48ea-ae0e-64047c517a5f" />
+
 
 途中Runするかどうか聞かれますが、基本的にEnterで大丈夫です。進みましょう。
 ※パスワードが求められるかもですが、そのときはPCにログインする際のパスワードを打ってください。
