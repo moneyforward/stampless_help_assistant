@@ -18,7 +18,7 @@ trigger_words: ["できない", "問い合わせ", "仕様", "不具合", "バ�
    - [サポートサイト](https://biz.moneyforward.com/support/contract/)  
    - 社内 Notion（MCP接続）  
    - 社内 Kibela（MCP接続）  
-   - フロントエンド／バックエンドコード（`{code/frontend}`, `{code/backend}`）
+   - フロントエンド／バックエンドコード（`{frontend}`, `{backend}`）
 
 5. 各情報源から取得した情報に基づき、以下のいずれかに課題を分類する：  
    - 不具合  
