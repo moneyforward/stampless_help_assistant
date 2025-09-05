@@ -49,7 +49,7 @@ trigger_words: ["できない", "問い合わせ", "仕様", "不具合", "バ�
 - サポートサイト：https://biz.moneyforward.com/support/contract/
 - Notion（MCPで接続）
 - Kibela（MCPで接続）
-- コード（`{code/frontend}`、`{code/backend}`）
+- コード（`{frontend}`、`{backend}`）
 
 ---
 
