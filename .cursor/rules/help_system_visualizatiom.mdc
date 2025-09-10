@@ -1,0 +1,626 @@
+## 🔍 自動コード参照システム（クラウド契約特化）
+
+### 📋 クラウド契約関連キーワード検出時の自動処理
+
+**トリガーワード**: 「クラウド契約」「契約書」「電子署名」「ワークフロー」「承認」「印鑑」「PDF」「契約管理」
+
+**自動実行フロー**:
+1. **コードベース検索**: 契約関連のファイル・機能を自動検索
+2. **実装詳細抽出**: API、コンポーネント、データベース設計を特定
+3. **フロー図生成**: 実際のコードに基づいたシーケンス図を作成
+4. **技術レベル判定**: ユーザーの質問内容から適切な説明レベルを決定
+
+### 🔎 ディレクトリ構造完全非依存検索パターン
+
+```bash
+# フロントエンド検索（場所を問わない汎用パターン）
+**/*{frontend,front,client,web,ui,app,react,vue,next,nuxt}*/**/*.{ts,tsx,js,jsx,vue}
+**/*{components,pages,views,screens,layouts}*/**/*.{ts,tsx,js,jsx,vue}
+**/*{store,stores,state,redux,vuex,pinia}*/**/*.{ts,tsx,js,jsx,vue}
+**/*{contract,signature,workflow,approval,lease,document}*/**/*.{ts,tsx,js,jsx,vue}
+
+# バックエンド検索（場所を問わない汎用パターン）
+**/*{backend,back,server,api,service,services,app,apps}*/**/*.{go,cs,py,js,ts,java,php,rb}
+**/*{handler,handlers,controller,controllers,router,routers,route,routes}*/**/*.{go,cs,py,js,ts,java,php,rb}
+**/*{usecase,usecases,domain,entity,entities,model,models}*/**/*.{go,cs,py,js,ts,java,php,rb}
+**/*{contract,signature,workflow,approval,lease,document,pdf,ocr,import,export}*/**/*.{go,cs,py,js,ts,java,php,rb}
+
+# 機能別検索（完全汎用パターン）
+**/*{contract,signature,workflow,approval,lease,document,pdf}*/**
+**/*{sign,signing,electronic,esign,esignature,digital}*/**
+**/*{approve,approval,approver,approving,review,reviewer}*/**
+**/*{workflow,flow,process,step,stage,pipeline}*/**
+
+# フレームワーク・技術スタック別検索
+**/*{gin,echo,fiber,express,fastapi,django,rails,spring}*/**
+**/*{react,vue,angular,svelte,next,nuxt,gatsby}*/**
+**/*{component,components,widget,widgets,element,elements}*/**
+
+# API・設定ファイル検索（場所を問わない）
+**/*.{yaml,yml,json,toml,ini,env,config}
+**/*{api,openapi,swagger,spec,specs,schema,schemas}*/**
+**/*{config,configs,configuration,settings,env,environment}*/**
+**/*{docker,compose,kubernetes,k8s,helm}*/**
+**/*{makefile,Makefile,build,scripts,deploy}*/**
+**/go.{mod,sum}
+**/package.json
+**/requirements.txt
+**/Gemfile
+**/pom.xml
+**/build.gradle
+```
+
+### 🎯 自動検索実行例
+
+```typescript
+// 1. 契約・署名関連質問を検出
+if (query.includes('クラウド契約') || query.includes('電子署名') || query.includes('契約') || query.includes('署名')) {
+  // 2. 完全非依存の並行検索実行
+  const searchResults = await Promise.all([
+    // フロントエンド検索（場所を問わない）
+    codebase_search('contract signature workflow component'),
+    glob_file_search('**/*{frontend,front,client,web,ui,app}*/**/*.{ts,tsx,js,jsx,vue}'),
+    glob_file_search('**/*{react,vue,next,nuxt}*/**/*.{ts,tsx,js,jsx,vue}'),
+    glob_file_search('**/*{contract,signature,workflow}*/**/*.{ts,tsx,js,jsx,vue}'),
+    
+    // バックエンド検索（場所を問わない）
+    codebase_search('contract signature API handler controller'),
+    glob_file_search('**/*{backend,back,server,api,service}*/**/*.{go,cs,py,js,ts,java,php,rb}'),
+    glob_file_search('**/*{handler,controller,router,route}*/**/*.{go,cs,py,js,ts,java,php,rb}'),
+    glob_file_search('**/*{contract,signature,workflow}*/**/*.{go,cs,py,js,ts,java,php,rb}'),
+    
+    // API・設定ファイル検索（場所を問わない）
+    glob_file_search('**/*.{yaml,yml,json}'),
+    grep('POST.*contract|GET.*signature|PUT.*workflow', { multiline: true }),
+    grep('contract.*handler|signature.*controller|workflow.*service', { multiline: true })
+  ]);
+  
+  // 3. 実装詳細を抽出
+  const implementation = extractImplementationDetails(searchResults);
+  
+  // 4. 技術レベルに応じた説明を生成
+  return generateExplanation(implementation, detectedLevel);
+}
+```# システムフロー可視化・説明用 Cursor Rules
+
+---
+title: "システムフロー可視化・説明支援ルール"
+description: "API、Webhook、フロントエンド・バックエンド処理フローを技術レベルに応じて可視化・説明するルール"
+tags: ["api", "webhook", "システム設計", "シーケンス図", "フロー", "可視化", "説明"]
+trigger_words: ["API", "webhook", "フロー", "シーケンス", "処理の流れ", "システム", "連携", "専門的に説明して", "クラウド契約", "契約書", "電子署名", "ワークフロー", "承認", "印鑑", "PDF", "契約管理"]
+---
+
+## 🧠 システムフロー説明AIタスクフロー（全10ステップ）
+
+1. **キーワード検出**: クラウド契約関連ワードを検出した場合、自動コード参照を実行
+2. **対象システム・処理の特定**: ユーザーからの質問内容を分析し、説明対象を明確化
+3. **技術レベル判定**: 「専門的に説明して」等のキーワードで説明レベルを決定
+4. **自動コードベース検索**: ディレクトリ構造に依存しない検索パターンで関連コードを特定
+5. **実装詳細抽出**: 検出されたコードから実際の処理フロー・API・データ構造を分析
+6. **処理フロー分析**: システム間の相互作用と処理順序を整理
+7. **シーケンス図生成**: 実際のコードに基づいたMermaid図を作成（必須）
+8. **段階的説明**: 技術レベルに応じた詳細度で説明文を生成
+9. **重要ポイント抽出**: エラーハンドリング、セキュリティ、パフォーマンス面の注意点
+10. **テンプレート出力**: 構造化された形式で回答を提示
+
+---
+
+## 🔍 技術レベル判定システム
+
+### 📊 判定基準
+
+#### レベル1: 一般向け（デフォルト）
+**対象**: 非技術者、エンドユーザー、経営層
+**特徴**:
+- 技術用語を極力使わない
+- 日常的な比喩で説明（「電話」「郵便」「レストラン」など）
+- 「なぜそうなるのか」の背景も説明
+- ビジネス的な意味・価値を重視
+
+#### レベル2: 開発関係者向け
+**対象**: PM、デザイナー、QA、営業技術担当
+**トリガーワード**: 「専門的に説明して」「詳しく」「技術的に」
+**特徴**:
+- 基本的な技術用語は使用OK
+- HTTP、JSON、データベースなどの概念説明あり
+- 処理の詳細や注意点も説明
+- 開発・運用上の考慮事項を含む
+
+#### レベル3: エンジニア向け
+**対象**: 開発者、インフラエンジニア、アーキテクト
+**トリガーワード**: 「エンジニア向けに」「実装詳細」「コードレベルで」
+**特徴**:
+- 専門用語を積極的に使用
+- 実装方法、コード例、設定例を含む
+- パフォーマンス、セキュリティの技術的詳細
+- 代替実装案や最適化手法も提示
+
+---
+
+## 📋 出力テンプレート
+
+### 🎯 基本構成（全レベル共通）
+
+```
+### 📖 システム概要
+{{対象システムの概要説明}}
+
+### 🔄 処理フロー図
+{{Mermaidシーケンス図}}
+
+### 📝 ステップ別詳細
+{{各ステップの詳細説明}}
+
+### ⚠️ 重要ポイント
+{{エラーハンドリング、セキュリティ、パフォーマンス}}
+
+### 💡 補足情報
+{{技術レベルに応じた追加情報}}
+```
+
+---
+
+## 🎨 シーケンス図作成ルール
+
+### 👥 参加者（Participant）標準セット
+```mermaid
+participant User as 👤ユーザー
+participant Frontend as 💻フロントエンド<br/>（画面・アプリ）
+participant Backend as 🖥️バックエンド<br/>（サーバー）
+participant API as 🔌外部API<br/>（他社サービス）
+participant DB as 🗄️データベース<br/>（データ保存）
+participant Queue as 📮キュー<br/>（待ち行列）
+participant Cache as ⚡キャッシュ<br/>（高速化）
+participant Auth as 🔐認証<br/>（ログイン管理）
+participant Payment as 💳決済<br/>（支払い処理）
+```
+
+### 🔄 矢印パターンと意味
+- `A->>B` : 📤 通常のリクエスト（同期処理）
+- `A-->>B` : 📥 レスポンス・返答
+- `A->>+B` : 🔄 処理開始（アクティベーション）
+- `B-->>-A` : ✅ 処理完了
+- `A-xB` : ❌ エラー・失敗
+- `A-)B` : 🚀 非同期処理（Webhook、バックグラウンド）
+- `A->>A` : 🔄 自己処理（バリデーション等）
+
+### 🎯 図の品質基準
+- **日本語説明必須**: 参加者名に日本語説明を併記
+- **ステップ番号**: 各矢印に番号を付与
+- **Note活用**: 重要な処理には Note で補足
+- **エラーパターン**: 正常系だけでなく異常系も図示
+- **非同期処理**: 並行処理は並行して表現
+
+---
+
+## 💬 レベル別説明テンプレート
+
+### 📱 レベル1（一般向け）説明例
+
+#### API呼び出し
+```
+【APIとは】
+レストランで注文するようなものです。
+- あなた（アプリ）がウェイター（API）に「ハンバーガーセット1つ」と注文
+- ウェイターがキッチン（サーバー）に伝える
+- 料理ができたら「お待たせしました」と持ってくる
+- 代金（データ）を支払って取引完了
+
+【なぜこの仕組み？】
+- お客さんはキッチンの中を知らなくても注文できる
+- 複数のお客さんが同時に注文できる
+- メニュー（機能）を変更してもお客さんには影響しない
+
+【クラウド契約での例】
+- 契約書作成ボタンを押す（注文）
+- システムが契約書のテンプレートを取得（料理の準備）
+- 完成した契約書が画面に表示される（料理の提供）
+```
+
+#### Webhook
+```
+【Webhookとは】
+「コールバック電話」のシステム版です。
+- 宅配便を注文した時、「到着したら連絡します」と言われる
+- 荷物が届いたら自動的に電話がかかってくる
+- あなたは配送状況を何度も確認する必要がない
+
+【メリット】
+- リアルタイムで情報が分かる
+- 無駄な確認作業が不要
+- 重要な変更を見逃さない
+
+【クラウド契約での例】
+- 相手方が契約書に署名完了
+- 自動的にあなたのシステムに「署名完了」の連絡が届く
+- 手動で確認しなくても、すぐに次の処理に進める
+```
+
+### 🔧 レベル2（開発関係者向け）説明例
+
+#### API呼び出し
+```
+【REST APIの基本】
+- HTTPプロトコルを使用したクライアント・サーバー通信
+- GET（取得）、POST（作成）、PUT（更新）、DELETE（削除）
+- JSON形式でデータをやり取り
+- ステータスコード（200成功、404未発見、500エラー等）で結果を判定
+
+【考慮事項】
+- 認証トークンの管理（JWT、OAuth等）
+- レート制限対策（429エラー回避）
+- タイムアウト設定
+- リトライ処理の実装
+
+【クラウド契約API設計例】
+- POST /contracts - 契約書作成
+- GET /contracts/{id} - 契約書取得
+- PUT /contracts/{id}/signature - 電子署名実行
+- GET /contracts/{id}/status - 承認状況確認
+```
+
+#### Webhook
+```
+【イベント駆動アーキテクチャ】
+- 外部サービスでイベント発生時にHTTP POSTを送信
+- 非同期処理でシステム間の疎結合を実現
+- エンドポイントURLを事前登録
+
+【実装上の注意】
+- 冪等性の確保（重複処理対策）
+- 署名検証によるセキュリティ確保
+- 失敗時のリトライ機能
+- イベントログの保持
+
+【クラウド契約Webhook例】
+- contract.signed - 署名完了イベント
+- contract.approved - 承認完了イベント
+- contract.expired - 契約期限切れイベント
+- workflow.step_completed - ワークフロー進行イベント
+```
+
+### 🔐 レベル3（エンジニア向け）説明例
+
+#### 実装詳細とコード例
+```typescript
+// クラウド契約API実装例（{{検出されたファイルパス}}）
+interface ContractAPI {
+  createContract(data: ContractData): Promise<Contract>;
+  signContract(id: string, signature: SignatureData): Promise<void>;
+  getContractStatus(id: string): Promise<ContractStatus>;
+}
+
+// Webhook受信エンドポイント（{{検出されたファイルパス}}）
+app.post('/webhook/contract-events', async (req, res) => {
+  const signature = req.headers['x-signature'];
+  const payload = req.body;
+  
+  // 署名検証
+  if (!verifyWebhookSignature(payload, signature)) {
+    return res.status(401).send('Invalid signature');
+  }
+  
+  // イベント処理
+  await processContractEvent(payload);
+  res.status(200).send('OK');
+});
+
+【パフォーマンス最適化】
+- 契約書PDF生成の非同期処理
+- 署名データのキャッシュ戦略
+- データベースインデックス設計
+- CDNを活用した静的ファイル配信
+
+【セキュリティ実装】
+- JWT/OAuth2による認証
+- 電子署名の暗号化アルゴリズム
+- 監査ログの改ざん防止
+- GDPR準拠のデータ管理
+```
+
+---
+
+## 🔄 フロー別テンプレート集
+
+### 📋 クラウド契約：電子署名フロー
+```mermaid
+sequenceDiagram
+    participant User as 👤利用者
+    participant Frontend as 💻契約画面<br/>（フロントエンド）
+    participant Backend as 🖥️契約管理API<br/>（バックエンド）
+    participant SignAPI as ✍️電子署名API<br/>（外部サービス）
+    participant DB as 🗄️契約DB<br/>（データベース）
+    participant Notify as 📧通知サービス<br/>（メール・Webhook）
+    
+    Note over User, Notify: 電子署名完了までの処理フロー
+    
+    User->>Frontend: 1. 契約書確認・署名開始
+    Frontend->>Backend: 2. 署名開始リクエスト
+    
+    Backend->>DB: 3. 契約書情報取得
+    DB-->>Backend: 4. 契約書データ返却
+    
+    Backend->>SignAPI: 5. 電子署名セッション作成
+    SignAPI-->>Backend: 6. 署名URL・トークン返却
+    
+    Backend-->>Frontend: 7. 署名画面URL提供
+    Frontend-->>User: 8. 署名画面表示
+    
+    User->>SignAPI: 9. 電子署名実行
+    SignAPI->>SignAPI: 10. 署名データ生成・検証
+    
+    SignAPI-)Backend: 11. 署名完了Webhook送信
+    Backend->>DB: 12. 署名情報保存
+    
+    Backend->>Notify: 13. 関係者への通知送信
+    Notify-)User: 14. 署名完了メール送信
+    
+    Backend-->>Frontend: 15. 署名完了ステータス更新
+    Frontend-->>User: 16. 「署名が完了しました」表示
+```
+
+### 📝 クラウド契約：承認ワークフロー
+```mermaid
+sequenceDiagram
+    participant Requester as 👤申請者
+    participant Frontend as 💻契約画面
+    participant Backend as 🖥️ワークフローAPI
+    participant WorkflowEngine as ⚙️ワークフローエンジン
+    participant Approver as 👔承認者
+    participant DB as 🗄️ワークフローDB
+    participant Notify as 📧通知サービス
+    
+    Note over Requester, Notify: 契約書承認ワークフロー
+    
+    Requester->>Frontend: 1. 契約書作成・承認申請
+    Frontend->>Backend: 2. 承認申請データ送信
+    
+    Backend->>WorkflowEngine: 3. ワークフロー開始
+    WorkflowEngine->>DB: 4. 承認ステップ定義取得
+    DB-->>WorkflowEngine: 5. 承認フロー情報返却
+    
+    WorkflowEngine->>Backend: 6. 次の承認者特定
+    Backend->>Notify: 7. 承認者への通知送信
+    Notify-)Approver: 8. 承認依頼メール送信
+    
+    Approver->>Frontend: 9. 承認画面アクセス
+    Frontend->>Backend: 10. 承認対象データ取得
+    Backend-->>Frontend: 11. 契約書・申請内容表示
+    
+    Approver->>Frontend: 12. 承認・却下判断
+    Frontend->>Backend: 13. 承認結果送信
+    
+    Backend->>WorkflowEngine: 14. 承認結果処理
+    WorkflowEngine->>DB: 15. ワークフロー状態更新
+    
+    alt 最終承認完了
+        WorkflowEngine->>Backend: 16a. ワークフロー完了通知
+        Backend->>Notify: 17a. 申請者へ完了通知
+        Notify-)Requester: 18a. 承認完了メール
+    else 次の承認者あり
+        WorkflowEngine->>Backend: 16b. 次承認者特定
+        Backend->>Notify: 17b. 次承認者へ通知
+        Notify-)Approver: 18b. 承認依頼メール
+    end
+```
+
+### 🛒 ECサイト注文処理
+```mermaid
+sequenceDiagram
+    participant User as 👤顧客
+    participant Frontend as 💻ショッピングサイト
+    participant Backend as 🖥️注文管理サーバー
+    participant Payment as 💳決済API
+    participant Inventory as 📦在庫管理
+    participant Email as 📧メール送信
+    
+    Note over User, Email: 商品注文の処理フロー
+    
+    User->>Frontend: 1. 商品をカートに追加
+    Frontend->>Backend: 2. カート情報保存
+    
+    User->>Frontend: 3. 注文確定ボタン押下
+    Frontend->>Backend: 4. 注文データ送信
+    
+    Backend->>Inventory: 5. 在庫確認
+    Inventory-->>Backend: 6. 在庫あり
+    
+    Backend->>Payment: 7. 決済処理依頼
+    Payment-->>Backend: 8. 決済完了
+    
+    Backend->>Inventory: 9. 在庫減算
+    Backend->>Email: 10. 注文確認メール送信
+    
+    Backend-->>Frontend: 11. 注文完了画面表示
+    Frontend-->>User: 12. 「ご注文ありがとうございます」
+```
+
+### 🔐 ユーザー認証フロー
+```mermaid
+sequenceDiagram
+    participant User as 👤ユーザー
+    participant Frontend as 💻アプリ画面
+    participant Backend as 🖥️認証サーバー
+    participant DB as 🗄️ユーザーDB
+    participant Session as 🔑セッション管理
+    
+    Note over User, Session: ログイン認証フロー
+    
+    User->>Frontend: 1. ID・パスワード入力
+    Frontend->>Backend: 2. ログイン要求
+    
+    Backend->>DB: 3. ユーザー情報検索
+    DB-->>Backend: 4. ユーザー情報返却
+    
+    Backend->>Backend: 5. パスワード照合
+    
+    alt 認証成功
+        Backend->>Session: 6. セッション作成
+        Session-->>Backend: 7. セッションID発行
+        Backend-->>Frontend: 8. ログイン成功 + トークン
+        Frontend-->>User: 9. ダッシュボード表示
+    else 認証失敗
+        Backend-xFrontend: 8. 認証エラー
+        Frontend-->>User: 9. エラーメッセージ表示
+    end
+```
+
+---
+
+## ⚠️ 重要ポイント抽出ガイド
+
+### 🔒 セキュリティ観点
+- **認証・認可**: どこで身元確認しているか
+- **データ暗号化**: 重要情報の保護方法
+- **入力検証**: 不正データの防止策
+- **アクセス制御**: 権限管理の仕組み
+
+### 🚀 パフォーマンス観点
+- **ボトルネック**: 処理が遅くなりそうな箇所
+- **キャッシュ**: 高速化の仕組み
+- **非同期処理**: 重い処理の分離
+- **リソース使用量**: CPU・メモリの消費
+
+### 🔧 運用・監視観点
+- **ログ出力**: 問題調査のための記録
+- **エラーハンドリング**: 異常時の対応
+- **ヘルスチェック**: システム死活監視
+- **アラート**: 障害通知の仕組み
+
+---
+
+## 🎯 具体的な説明例（パターン別）
+
+### 📊 データ分析基盤
+**レベル1説明**: 「工場の生産ラインのようなもので、生データ（原料）を加工して、レポート（製品）を作る仕組みです」
+
+**レベル2説明**: 「ETLパイプラインで、Extract（抽出）→Transform（変換）→Load（格納）の流れでデータを処理し、BIツールで可視化します」
+
+### 🔄 マイクロサービス連携
+**レベル1説明**: 「専門店街のようなもので、それぞれの店（サービス）が得意分野を担当し、必要に応じて連携します」
+
+**レベル2説明**: 「API Gateway経由でサービス間通信を行い、Service Meshでトラフィック制御とセキュリティを管理します」
+
+---
+
+## 📋 出力チェックリスト
+
+### ✅ 必須要素
+- [ ] Mermaidシーケンス図を含む
+- [ ] 技術レベルに応じた説明
+- [ ] 重要ポイントの抽出
+- [ ] 具体的な例・比喩の使用
+
+### ✅ 品質基準
+- [ ] 非技術者でも理解できる言葉選び
+- [ ] 図と説明の整合性
+- [ ] エラーケースの考慮
+- [ ] 実用的な補足情報
+
+### ✅ レベル2以上の追加要素
+- [ ] 技術的な考慮事項
+- [ ] 代替実装案の提示
+- [ ] パフォーマンス・セキュリティ観点
+- [ ] 運用上の注意点
+
+---
+
+## 🔍 自動コード検索実行例
+
+### 📋 クラウド契約関連質問の処理フロー
+
+```typescript
+// ユーザー質問: 「クラウド契約の電子署名はどう動いてる？」
+
+1. キーワード検出: "クラウド契約" + "電子署名" → 自動コード参照開始
+
+2. 自動検索実行:
+   - codebase_search("electronic signature contract workflow")
+   - grep("signature.*contract|contract.*signature")
+   - glob_file_search("**/*{signature,contract,sign}*/**")
+   - grep("POST.*sign|PUT.*signature") // API検索
+
+3. 検出結果例:
+   - Frontend: apps/web/src/features/contract/signature/
+   - Backend: services/contract-api/handlers/signature.go
+   - API: openapi/contract-signature.yaml
+   - Database: migrations/contract_signatures.sql
+
+4. 実装詳細抽出:
+   - 署名フロー: SignatureWorkflow.tsx
+   - API仕様: POST /contracts/{id}/signature
+   - データ構造: SignatureData interface
+   - セキュリティ: JWT認証 + 署名検証
+
+5. 技術レベル判定: 一般向け（デフォルト）
+
+6. 出力生成:
+   - シーケンス図: 実際のAPIエンドポイントを使用
+   - 説明文: レベル1（一般向け）+ 実装詳細を織り込み
+   - 重要ポイント: 検出されたセキュリティ実装を説明
+```
+
+### 🎯 ディレクトリ構造完全非依存検索の実例
+
+```bash
+# 質問: 「承認ワークフローのAPIはどこ？」
+
+# 従来の問題: 固定パス・特定構造への依存
+❌ frontend/src/workflow/           # 存在しない可能性
+❌ backend/api/workflow/            # 構造が違う可能性
+❌ stampless_backend/handlers/      # プロジェクト固有パス
+
+# 改善された完全非依存検索パターン
+✅ **/*{frontend,front,client,web,ui,app}*/**/*{workflow,approval}*
+✅ **/*{backend,back,server,api,service}*/**/*{workflow,approval}*
+✅ **/*{handler,controller,router,route}*/**/*{workflow,approval}*
+✅ **/*{react,vue,next,nuxt}*/**/*{workflow,approval}*
+✅ **/*{workflow,approval,process,step}*/**
+
+# 様々なプロジェクト構造での検出例
+Found: my-app/src/frontend/components/WorkflowApproval.tsx      # React構造
+Found: web-client/pages/approval/workflow.vue                  # Vue構造  
+Found: server/api/handlers/workflow_controller.go              # Go構造
+Found: backend-services/approval/workflow_service.py           # Python構造
+Found: apps/contract-api/routes/approval.js                    # Node.js構造
+Found: microservices/workflow-engine/controllers/approval.cs   # C#構造
+Found: project-root/services/workflow/approval_handler.rb      # Ruby構造
+```
+
+## 🚀 使用例
+
+**ユーザー**: 「クラウド契約の電子署名の流れを説明して」
+→ 自動コード参照 + レベル1説明 + 実際の署名フローシーケンス図 + 実装詳細
+
+**ユーザー**: 「契約書の承認ワークフローについて専門的に説明して」
+→ 自動コード参照 + レベル2説明 + ワークフローエンジンの技術詳細 + API仕様
+
+**ユーザー**: 「Webhookの署名検証をエンジニア向けに」
+→ 自動コード参照 + レベル3説明 + 実際のコード例 + セキュリティ実装詳細
+
+**ユーザー**: 「PDFの生成処理はどうなってる？」
+→ 自動コード参照 + PDF生成ライブラリ検出 + 処理フロー図 + パフォーマンス考慮事項
+
+## 📋 出力品質チェックリスト
+
+### ✅ 必須要素（全レベル共通）
+- [ ] 自動コード参照を実行（クラウド契約関連の場合）
+- [ ] Mermaidシーケンス図を含む（実際のAPI/コンポーネント名を使用）
+- [ ] 技術レベルに応じた説明
+- [ ] 重要ポイントの抽出（実装に基づく）
+- [ ] 具体的な例・比喩の使用
+
+### ✅ 自動コード参照品質
+- [ ] ディレクトリ構造に依存しない検索を実行
+- [ ] 複数の検索パターンを並行実行
+- [ ] 検出されたファイル・API・データ構造を説明に織り込み
+- [ ] 実際のコードに基づいたシーケンス図を生成
+
+### ✅ レベル別品質基準
+- [ ] **レベル1**: 非技術者でも理解できる言葉選び + 実装の「なぜ」を説明
+- [ ] **レベル2**: 技術的考慮事項 + 実際のAPI設計 + 運用上の注意点
+- [ ] **レベル3**: 実装詳細 + コード例 + パフォーマンス・セキュリティ最適化
+
+---
+
+このルールに従って、どんな複雑なシステムでも、実際のコードに基づいて対象者に最適なレベルで分かりやすく可視化・説明できます。特にマネーフォワードクラウド契約については、自動的にコードベースを参照して最新の実装状況を反映した説明を提供します。
